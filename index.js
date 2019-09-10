@@ -49,6 +49,45 @@ app.get('/api/persons/:id', (req, res) => {
   }
 })
 
+const generatedId = () => {
+  let id = 0
+  for(let i = 0; i < 10; i++) {
+    id = Math.floor(Math.random() * 100000)
+    if (!persons.find(person => person.id === id)) {
+      return id
+    }
+  }
+  const maxId = notes.length > 0
+    ? Math.max(...persons.map(person => person.id))
+    : 0
+  return maxId + 1
+}
+
+app.post('/api/persons', (req, res) => {
+  const body = req.body
+
+  if(!body.name) {
+    return res.status(400).json({
+      error: 'name missing'
+    })
+  }
+  if(!body.number) {
+    return res.status(400).json({
+      error: 'number missing'
+    })
+  }
+
+  const person = {
+    name: body.name,
+    number: body.number,
+    date: new Date(),
+    id: generatedId(),
+  }
+  persons = persons.concat(person)
+
+  res.json(person)
+})
+
 app.delete('/api/persons/:id', (req, res) => {
   const id = Number(req.params.id)
   const person = persons.find(person => person.id === id)
