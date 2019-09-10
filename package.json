@@ -8,8 +8,9 @@
     "watch": "nodemon index.js",
     "build:ui": "rmdir build /s /q && cd ..\\part2\\phonebook && npm run build --prod && xcopy build ..\\..\\part3\\build\\ /s",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && npm run deploy",    
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "author": "ponko23",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "eslint": "^6.3.0",
     "nodemon": "^1.19.2"
   }
 }

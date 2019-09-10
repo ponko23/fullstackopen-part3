@@ -20,23 +20,23 @@ app.use(morgan((tokens, req, res) => {
 
 let persons = [
   {
-    name: "Arto Hellas",
-    number: "040-123456",
+    name: 'Arto Hellas',
+    number: '040-123456',
     id: 1
   },
   {
-    name: "Ada Lovelace",
-    number: "39-44-5323523",
+    name: 'Ada Lovelace',
+    number: '39-44-5323523',
     id: 2
   },
   {
-    name: "Dan Abramov",
-    number: "12-43-234345",
+    name: 'Dan Abramov',
+    number: '12-43-234345',
     id: 3
   },
   {
-    name: "Mary Poppendieck",
-    number: "39-23-6423121",
+    name: 'Mary Poppendieck',
+    number: '39-23-6423121',
     id: 4
   }
 ]
@@ -71,7 +71,7 @@ const generatedId = () => {
       return id
     }
   }
-  const maxId = notes.length > 0
+  const maxId = persons.length > 0
     ? Math.max(...persons.map(person => person.id))
     : 0
   return maxId + 1
@@ -115,7 +115,8 @@ app.delete('/api/persons/:id', (req, res) => {
 
 
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })
