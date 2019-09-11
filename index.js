@@ -50,7 +50,7 @@ app.post('/api/persons', (request, response, next) => {
     number: body.number,
     date: new Date(),
   })
-  
+
   person
     .save()
     .then(savedPerson => {
@@ -62,7 +62,7 @@ app.post('/api/persons', (request, response, next) => {
 app.get('/api/persons', (request, response) => {
   Person
     .find({})
-    .then(persons =>{
+    .then(persons => {
       response.json(persons.map(person => person.toJSON()))
     })
 })
